@@ -1,200 +1,105 @@
 #root {
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+  width: 100vw;
+  height: 100vh;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  flex: 1;
-  order: 0;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-
-.logo img {
-  position: absolute;
-  width: 92px;
-  height: 92px;
-  left: 1261px;
-  top: 23px;
-  background: url(assets/img/logo.png);
-}
-
-.welcome-message {
-  margin-bottom: 20px;
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  box-sizing: border-box;
+  background: url('src/assets/img/bg_blue.png') no-repeat center bottom/cover;
+  color: #2B73FF;
+  padding: 1rem;
 }
+.logo{
+  width: 4rem;
+  aspect-ratio: 1;
+  margin-left: auto;
+}
+.logo>img{
+  width: 100%;
+  aspect-ratio: 1;
+}
+h1{
+  font-family: 'Inria Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 58px;
 
-h1 {
-  /* Welcome to AlphaWave Laptop Company's Dynamic Q&A Platform! Hello there!*/
+  text-align: left;
 
-  position: relative;
-  width: 1062px;
-  height: 518px;
-  left: calc(50% - 1062px/2);
-  top: calc(50% - 518px/2);
+}
+h2{
 
   font-family: 'Inria Sans';
   font-style: normal;
   font-weight: 700;
   font-size: 48px;
   line-height: 58px;
-  flex: 1;
-  order: 0;
   text-align: left;
-
-  color: #2B73FF;
-}
-
-h2 {
-  position: relative;
-  width: 1062px;
-  height: 200px;
-  left: calc(50% - 1062px/2);
-  top: calc(50% - 200px/2);
-
-  font-family: 'Inria Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 48px;
-  line-height: 58px;
-  flex: 1;
-  order: 1;
-  text-align: left;
-  color: #2B73FF;
 }
 
 p {
-  /* We're thrilled to have you here. Whether you have questions about our cutting-edge products or need assistance with our services, we're here to help. Your satisfaction is our priority! Happy exploring! */
-
-  position: relative;
-  width: 1062px;
-  height: 229px;
-  left: calc(50% - 1062px/2);
-  top: calc(50% - 229px/2 + 122.5px);
-
   font-family: 'Inria Sans';
   font-style: normal;
   font-weight: 300;
   font-size: 25px;
   line-height: 43px;
-  flex: 1;
-  order: 2;
   text-align: left;
-
-  color: #2B73FF;
 }
 
-.container {
-  position: absolute;
-  width: 1440px;
-  height: 810px;
-  left: 0px;
-  top: -107px;
-  background-image: url('assets/img/bg_blue.png');
-  margin: auto;
 
-}
+
+
 
 .input-area {
-/* Auto layout */
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 9px 28px;
-  justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 9px 28px;
+    justify-content: space-around;
 
-  position: absolute;
-  width: 1000px;
-  height: 40px;
-  left: 360px;
-  top: 750px;
-
-  background: rgba(230, 230, 230, 0.5);
-  border: 4px solid #2B73FF;
-  border-radius: 35px;
-}
-
-#question-input {
-  width: 2500px;
-  height: 10px;
-
-  font-family: 'Inria Sans';
-  font-style: normal;
-  font-weight: 200;
-  font-size: 25px;
-  line-height: 38px;
-  flex: 1;
-  order: 0;
-  padding: 15px;
-
-  color: rgba(43, 115, 255, 0.8);
-  background-color: transparent;
-  border: none;
-}
-
-.send-button {
-  padding: 10px;
-  width: 40px;
-  height: 40px;
-  background-color: #0a58ca;
-  border: none;
-  border-radius: 20px;
-  color: white;
-  cursor: pointer;
-  flex: none;
-  order: 1;
-  /* margin: 8px; */
-}
-
-#messageInput {
-  /* Rectangle 1 */
-  position: absolute;
-  width: 4000px;
-  height: 50px;
-  left: calc(50% - 1224px/2);
-  top: 886px;
-
-  background: rgba(230, 230, 230, 0.5);
-  border: 4px solid #2B73FF;
-  border-radius: 35px;
-}
-
-
-
-
-
+    background: rgba(230, 230, 230, 0.5);
+    border: 4px solid #2B73FF;
+    border-radius: 35px;
+  }
+  
+  #question-input {
+  
+    font-family: 'Inria Sans';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 25px;
+    line-height: 38px;
+    padding: 15px;
+    color: rgba(43, 115, 255, 0.8);
+    background-color: transparent;
+    border: none;
+    width: 100%;
+  }
+  
+  .send-button {
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: #0a58ca;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    /* margin: 8px; */
+  }
+  
+  #messageInput {
+  
+    background: rgba(230, 230, 230, 0.5);
+    border: 4px solid #2B73FF;
+    border-radius: 35px;
+  }
+  
