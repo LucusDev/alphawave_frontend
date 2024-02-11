@@ -59,7 +59,8 @@ function App() {
         <div className="logo"><img alt="AlphaWave Logo" src='src/assets/img/logo.png'></img></div>
       </div>
       <div className="welcome-message">
-        <h1>Welcome to AlphaWave Laptop Company's Dynamic Q&A Platform!</h1>
+        <h1>Welcome to AlphaWave Laptop Company's </h1>
+        <h1>Dynamic Q&A Platform!</h1>
         <h2>Hello there!</h2>
         <p>We're thrilled to have you here. Whether you have questions about our cutting-edge products or need assistance with our services, we're here to help. Your satisfaction is our priority! Happy exploring!</p>
       </div>
@@ -67,7 +68,6 @@ function App() {
         <input type="text" id="question-input" placeholder="Enter your queries here..." value={inputText} onChange={(e) => setInputText(e.target.value)}></input>
         <button className="send-button" onClick={() => GetResponse()}>&rarr;</button>
       </div>
-      {/* <div className='bg-img'><img src="src/assets/img/bg_blue.png" alt="" /></div> */}
     </div>
   )
 }
