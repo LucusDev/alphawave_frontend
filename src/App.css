@@ -38,6 +38,7 @@
   width: 100%;
   aspect-ratio: 1;
 }
+
 h1{
   font-family: 'Inria Sans';
   font-style: normal;
@@ -67,9 +68,79 @@ p {
   text-align: left;
 }
 
+.query{
+  color: white;
+  background-color: #2B73FF;
+  border-radius: 20px;
+  text-align: right;
+  padding: 0.05rem 15px;
+  width: fit-content;
+  height: max-content;
+  max-width: 1000px;
+  margin-left: auto; 
+  margin-right: 0;
+  margin-bottom: 20px;
+}
+
 .welcome-message {
   margin-bottom: 180px;
   padding: 10px 30px;
+}
+
+.response {
+  color: #2B73FF;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 3px solid #2B73FF;
+  border-radius: 20px;
+  text-align: left;
+  padding: 15px;
+  margin-bottom: 30px;
+  width: fit-content;
+  max-width: 1200px;
+}
+
+  #thumbsup-button {
+    background: url("assets/img/thumbs_up1.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+
+  #thumbsup-button :active {
+    background: url("assets/img/thumbs_up2.png");
+  }
+
+  #thumbsdown-button {
+    background: url("assets/img/thumbs_down1.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+
+  #thumbsdown-button :active {
+    background: url("assets/img/thumbs_down2.png");
+  }
+
+  #copy-button {
+    background: url("assets/img/copy1.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+
+  #copy-button :active {
+    background: url("assets/img/copy2.png");
+  }
+
+.response button {
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+.response button:hover {
+  opacity: 80%; 
+  border: none;
 }
 
 .input-area {
@@ -79,10 +150,10 @@ p {
     padding: 9px 20px;
     justify-content: space-around;
 
-    background: rgba(230, 230, 230, 0.8);
+    background: white;
     border: 4px solid #2B73FF;
     border-radius: 35px;
-  }
+}
   
   #question-input {
   
@@ -102,10 +173,16 @@ p {
     padding: 10px;
     width: 40px;
     height: 40px;
-    background-color: #0a58ca;
+
+    background: url(assets/img/sendbtn_blue.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
     border: none;
-    border-radius: 20px;
-    color: white;
     cursor: pointer;
-    /* margin: 8px; */
+  }
+
+  .send-button:hover {
+    opacity: 80%; 
   }
