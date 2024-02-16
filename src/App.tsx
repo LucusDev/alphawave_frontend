@@ -3,7 +3,7 @@ import './App.css'
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 function App() {
-  const API_KEY = "";
+  const API_KEY = "AIzaSyAJrfe264OVSp6z4vzNY5iQAq3n_9H7tSU";
   const genAI = new GoogleGenerativeAI(API_KEY);
   const [inputText, setInputText] = useState("");
   const [messages, setMessages] = useState<{ role: string; parts: { text: string; }[] }[]>([]);
