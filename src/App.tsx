@@ -5,24 +5,41 @@ import {post} from "./api/service.ts"
 
 function App() {
   const [inputText, setInputText] = useState("");
-  const [messages, setMessages] = useState<{ role: string; text: string }[]>(
+  const [messages, setMessages] = useState<{ role: string; text: string; status:string }[]>(
     []
   );
   const [loading, setLoading] = useState(false);
+
   const handleKeyDown = (event: any) => {
     if (event.key === "Enter") {
       GetResponse();
     }
   };
+
+  async function handleCopyText(copyText: string) {
+    navigator.clipboard.writeText(copyText);
+  }
+
+  const handleButtonClick = (msgIndex: number, status: string) => {
+    setMessages(prevMessages => {
+      // Create a new array with updated status for the clicked message
+      return prevMessages.map((message, index) => {
+        if (index === msgIndex) {
+          return { ...message, status: status }; // Update the status of the clicked message
+        }
+        return message; // Return unchanged messages
+      });
+    });
+  };
+
   async function GetResponse() {
-    // For text-only input, use the gemini-pro model
     if (inputText.length == 0) {
       return;
     }
 
     setMessages((prevMessages) => [
       ...prevMessages,
-      { role: "user", text: inputText },
+      { role: "user", text: inputText, status:"" },
     ]);
 
     setInputText("");
@@ -36,7 +53,7 @@ function App() {
 
       setMessages((prevMessages) => [
         ...prevMessages,
-        { role: "ai", text: text },
+        { role: "ai", text: text, status:"" },
       ]);
       setLoading(false);
     } catch (error) {
@@ -79,9 +96,11 @@ function App() {
             return (
               <div className="response" key={index}>
                 <p>{message.text}</p>
-                <button className="thumbsup-button"></button>
-                <button className="thumbsdown-button"></button>
-                <button className="copy-button"></button>
+                <button className={`thumbsup-button ${message.status === 'Thumbs-up' ? 'active' : ''}`}
+                onClick={()=>handleButtonClick(index, 'Thumbs-up')}></button>
+                <button className={`thumbsdown-button ${message.status === 'Thumbs-down' ? 'active' : ''}`}
+                onClick={()=>handleButtonClick(index, 'Thumbs-down')}></button>
+                <button className="copy-button" onClick={() => handleCopyText(message.text)}></button>
               </div>
             );
           })}
