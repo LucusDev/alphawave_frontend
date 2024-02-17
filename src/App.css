@@ -98,39 +98,50 @@ p {
   max-width: 1200px;
 }
 
-#thumbsup-button {
+.thumbsup-button {
   background: url("assets/img/thumbs_up1.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 
-#thumbsup-button :active {
+.thumbsup-button:active {
   background: url("assets/img/thumbs_up2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
-#thumbsdown-button {
+.thumbsdown-button {
   background: url("assets/img/thumbs_down1.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 
-#thumbsdown-button :active {
+.thumbsdown-button:active {
   background: url("assets/img/thumbs_down2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
-#copy-button {
+.copy-button {
   background: url("assets/img/copy1.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 
-#copy-button :active {
+.copy-button:active {
   background: url("assets/img/copy2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
-
+*:focus{
+  outline-color: 4px auto transparent !important;
+}
 .response button {
   margin-right: 10px;
   width: 30px;

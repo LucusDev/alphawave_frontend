@@ -79,9 +79,9 @@ function App() {
             return (
               <div className="response" key={index}>
                 <p>{message.text}</p>
-                <button id="thumbsup-button"></button>
-                <button id="thumbsdown-button"></button>
-                <button id="copy-button"></button>
+                <button className="thumbsup-button"></button>
+                <button className="thumbsdown-button"></button>
+                <button className="copy-button"></button>
               </div>
             );
           })}
