@@ -1,10 +1,9 @@
 import { useState } from "react";
 import "./App.css";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import {post} from "./api/service.ts"
+
 
 function App() {
-  const API_KEY = "AIzaSyAJrfe264OVSp6z4vzNY5iQAq3n_9H7tSU";
-  const genAI = new GoogleGenerativeAI(API_KEY);
   const [inputText, setInputText] = useState("");
   const [messages, setMessages] = useState<{ role: string; text: string }[]>(
     []
@@ -17,7 +16,6 @@ function App() {
   };
   async function GetResponse() {
     // For text-only input, use the gemini-pro model
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
     if (inputText.length == 0) {
       return;
     }
@@ -31,9 +29,10 @@ function App() {
     setLoading(true);
 
     try {
-      const result = await model.generateContent(inputText);
-      const response = await result.response;
-      const text = response.text();
+      const result = await post("chat/",{
+        "message":inputText,
+      },{});
+      const text = result.data.message;
 
       setMessages((prevMessages) => [
         ...prevMessages,
