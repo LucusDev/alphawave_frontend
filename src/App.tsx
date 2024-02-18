@@ -22,12 +22,11 @@ function App() {
 
   const handleButtonClick = (msgIndex: number, status: string) => {
     setMessages(prevMessages => {
-      // Create a new array with updated status for the clicked message
       return prevMessages.map((message, index) => {
         if (index === msgIndex) {
           return { ...message, status: status }; // Update the status of the clicked message
         }
-        return message; // Return unchanged messages
+        return message;
       });
     });
   };
@@ -53,7 +52,7 @@ function App() {
 
       setMessages((prevMessages) => [
         ...prevMessages,
-        { role: "ai", text: text, status:"" },
+        { role: "model", text: text, status:"" },
       ]);
       setLoading(false);
     } catch (error) {
