@@ -31,6 +31,10 @@ function App() {
     });
   };
 
+  const handleFAQButton = (buttonText: string) => {
+    setInputText(buttonText);
+  };
+
   async function GetResponse() {
     if (inputText.length == 0) {
       return;
@@ -79,6 +83,12 @@ function App() {
             we're here to help. Your satisfaction is our priority! Happy
             exploring!
           </p>
+          <div className="faq">
+            <button onClick={() => handleFAQButton("Warranty information")}>Warranty information</button>
+            <button onClick={() => handleFAQButton("Where can I find troubleshooting tips for my laptop?")}>Where can I find troubleshooting tips for my laptop?</button>
+            <button onClick={() => handleFAQButton("Specifications of AlphaWave X1")}>Specifications of AlphaWave X1</button>
+            <button onClick={() => handleFAQButton("What are the discounts and promotions available?")}>What are the discounts and promotions available?</button>
+          </div>
         </div>
       )}
 
