@@ -8,8 +8,7 @@ function App() {
   const [messages, setMessages] = useState<{ role: string; text: string; status:string }[]>(
     []
   );
-  const [loading, setLoading] = useState(false);
-
+  const [loading, setLoading] = useState(false);    
   const handleKeyDown = (event: any) => {
     if (event.key === "Enter") {
       GetResponse();
@@ -69,7 +68,7 @@ function App() {
     <div className="container">
       <div className="header">
         <div className="logo">
-          <img alt="AlphaWave Logo" src="src/assets/img/logo.png"></img>
+          <img alt="AlphaWave Logo" src={window.location.href+"assets/img/logo.png"}></img>
         </div>
       </div>
       {messages.length === 0 && (
