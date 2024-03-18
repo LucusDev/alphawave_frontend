@@ -50,6 +50,7 @@ function App() {
     try {
       const result = await post("chat/",{
         "message":inputText,
+        "history":messages
       },{});
       const text = result.data.message;
 
