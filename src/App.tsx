@@ -1,20 +1,37 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import {post} from "./api/service.ts"
 
 
 function App() {
+  const messageRef = useRef<HTMLDivElement>(null);
   const [inputText, setInputText] = useState("");
+  const [recommendations,setRecommendations] = useState(['Warranty information','Where can I find troubleshooting tips for my laptop?','Specifications of AlphaWave X1','What are the discounts and promotions available?']);
   const [messages, setMessages] = useState<{ role: string; text: string; status:string }[]>(
     []
   );
   const [loading, setLoading] = useState(false);    
+  const [loadingRecom, setLoadingRecom] = useState(true);    
+
   const handleKeyDown = (event: any) => {
     if (event.key === "Enter") {
       GetResponse();
     }
   };
-
+  async function getRecommendations() {
+    try {
+      const result = await post("chat/recommendations/",{
+      },{});
+      const text = result.data.message;
+      setRecommendations((text as {'question':''}[]).map(questions => {
+        return questions['question']??'';
+       }));
+       setLoadingRecom(false);
+    } catch (error) {
+      setLoadingRecom(false);
+      console.error("generateContent error: ", error);
+    }
+  }
   async function handleCopyText(copyText: string) {
     navigator.clipboard.writeText(copyText);
   }
@@ -23,7 +40,7 @@ function App() {
     setMessages(prevMessages => {
       return prevMessages.map((message, index) => {
         if (index === msgIndex) {
-          return { ...message, status: status }; // Update the status of the clicked message
+          return { ...message, status: status }; 
         }
         return message;
       });
@@ -31,25 +48,30 @@ function App() {
   };
 
   const handleFAQButton = (buttonText: string) => {
-    setInputText(buttonText);
+    GetResponse(buttonText);
   };
-
-  async function GetResponse() {
-    if (inputText.length == 0) {
+  function scrollToBottom() {
+    setTimeout(() => {
+        (messageRef.current as HTMLDivElement).scrollTop = (messageRef.current as HTMLDivElement).scrollHeight;
+    }, 100);
+  }
+  async function GetResponse(text?: string){
+    let messageText = text??inputText;
+    if (messageText.length == 0 || loading) {
       return;
     }
 
     setMessages((prevMessages) => [
       ...prevMessages,
-      { role: "user", text: inputText, status:"" },
+      { role: "user", text: messageText, status:"" },
     ]);
 
     setInputText("");
     setLoading(true);
-
+    scrollToBottom();
     try {
       const result = await post("chat/",{
-        "message":inputText,
+        "message":messageText,
         "history":messages
       },{});
       const text = result.data.message;
@@ -64,7 +86,9 @@ function App() {
       console.error("generateContent error: ", error);
     }
   }
-
+  useEffect(() => {
+    getRecommendations();
+  },[]);
   return (
     <div className="container">
       <div className="header">
@@ -83,17 +107,19 @@ function App() {
             we're here to help. Your satisfaction is our priority! Happy
             exploring!
           </p>
-          <div className="faq">
-            <button onClick={() => handleFAQButton("Warranty information")}>Warranty information</button>
-            <button onClick={() => handleFAQButton("Where can I find troubleshooting tips for my laptop?")}>Where can I find troubleshooting tips for my laptop?</button>
-            <button onClick={() => handleFAQButton("Specifications of AlphaWave X1")}>Specifications of AlphaWave X1</button>
-            <button onClick={() => handleFAQButton("What are the discounts and promotions available?")}>What are the discounts and promotions available?</button>
+          {
+            !loadingRecom && <div className="faq">
+            {
+              recommendations.map((recommendation,index) =><button key={index} onClick={() => handleFAQButton(recommendation)} >{recommendation}</button>)
+            }
           </div>
+          }
+          
         </div>
       )}
 
       {messages.length != 0 && (
-        <div className="message-list">
+        <div className="message-list" ref={messageRef}>
           {messages.map((message, index) => {
             if (message.role == "user") {
               return (
