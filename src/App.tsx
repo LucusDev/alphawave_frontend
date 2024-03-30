@@ -61,11 +61,16 @@ function App() {
     if(isDark){
       document.body.classList.toggle('dark');
       setDark(false);
+      saveDark(false);
     }
     else{
       document.body.classList.toggle('dark');
       setDark(true);
+      saveDark(true);
     }
+  }
+  function saveDark(bool:boolean){
+    localStorage.setItem("dark", bool?'1':'0');
   }
   async function GetResponse(text?: string){
     let messageText = text??inputText;
@@ -100,6 +105,11 @@ function App() {
   }
   useEffect(() => {
     getRecommendations();
+    const dark = (localStorage.getItem("dark")??'')=='1';
+    if(dark){
+      document.body.classList.add('dark');
+      setDark(true);
+    }
   },[]);
   return (
     <div className={isDark?'container dark':'container'}>
