@@ -237,20 +237,9 @@ p {
   background-size: contain;
   background-position: center;
 }
-.container.dark .copy-button {
-  background: url("/assets/img/copy1_dark.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
+
 .copy-button:active {
   background: url("/assets/img/copy2.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-.container.dark .copy-button:active {
-  background: url("/assets/img/copy2_dark.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;

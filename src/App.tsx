@@ -11,6 +11,8 @@ function App() {
     []
   );
   const [loading, setLoading] = useState(false);    
+  const [isDark, setDark] = useState(false);    
+
   const [loadingRecom, setLoadingRecom] = useState(true);    
 
   const handleKeyDown = (event: any) => {
@@ -55,6 +57,16 @@ function App() {
         (messageRef.current as HTMLDivElement).scrollTop = (messageRef.current as HTMLDivElement).scrollHeight;
     }, 100);
   }
+  function toggleDark(){
+    if(isDark){
+      document.body.classList.toggle('dark');
+      setDark(false);
+    }
+    else{
+      document.body.classList.toggle('dark');
+      setDark(true);
+    }
+  }
   async function GetResponse(text?: string){
     let messageText = text??inputText;
     if (messageText.length == 0 || loading) {
@@ -90,10 +102,11 @@ function App() {
     getRecommendations();
   },[]);
   return (
-    <div className="container">
+    <div className={isDark?'container dark':'container'}>
       <div className="header">
         <div className="logo">
           <img alt="AlphaWave Logo" src={window.location.href+"assets/img/logo.png"}></img>
+          <img alt="dark mode toggle" src={window.location.href+(isDark?"assets/svg/day.svg":"assets/svg/night.svg")} onClick={toggleDark}></img>
         </div>
       </div>
       {messages.length === 0 && (
